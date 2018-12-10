@@ -80,7 +80,9 @@
         var loader = new THREE.TextureLoader();
         var geometry = new THREE.SphereGeometry(1, 32, 16);
         var material = new THREE.MeshStandardMaterial({
-            color: 0xccffcc});
+            color: 0xccffcc,
+            
+        });
         var mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
@@ -99,26 +101,26 @@
         render();
 
 
-        ////パーティクル
-        //var particle_geometry = new THREE.Geometry();
-        //var numParticles = 2000;
-        //for (var i = 0; i < numParticles; i++){
-        //    particle_geometry.vertices.push(
-        //        new THREE.Vector3(
-        //            Math.random() * 20 - 10,
-        //            Math.random() * 20 - 10,
-        //            Math.random() * 20 - 10));
-        //}
-        //var particle_material = new THREE.PintsMaterial({
-        //    size: 0.01,
-        //    color: 0x80ffccaa,
-        //    blending: THREE.AdditiveBlending,
-        //    transparent: true,
-        //    depthTest: true
-        //});
-        ////物体を作成
-        //var emitter = new THREE.position(particle_geometry, particle_material);
-        //scene.add(emitter);
+        //パーティクル
+        var particle_geometry = new THREE.Geometry();
+        var numParticles = 2000;
+        for (var i = 0; i < numParticles; i++){
+            particle_geometry.vertices.push(
+                new THREE.Vector3(
+                    Math.random() * 20 - 10,
+                    Math.random() * 20 - 10,
+                    Math.random() * 20 - 10));
+        }
+        var particle_material = new THREE.PointsMaterial({
+            size: 0.01,
+            color: 0x80ffccaa,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            depthTest: true
+        });
+        //物体を作成
+        var emitter = new THREE.Points(particle_geometry, particle_material);
+        scene.add(emitter);
 
     </script>
 
